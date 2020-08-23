@@ -1,15 +1,18 @@
 #<p style='text-align: center;'>Davinci's Vessels</p>
 ####<p style='text-align: center;'>A continuation of Archimedes Ships by CKathode</p>
----
-
-If you have feature suggestions feel free to add them as an issue.
 
 ---
 
 ####<p style='text-align: center;'>Developers Read Here</p>
 
-Want to help make this mod even better, and make sure that it stays updated for future versions of Minecraft? If you're interested in making a feature go ahead and make an issue to see if it's alright, and if you get the go ahead get to work and make a pull request when it's complete. If you have a bug fix the same rules apply, just make sure it's okay before you start working so your code doesn't go to waste!
+This is a butchered extremely unofficial version of Davinci's Vessels for use in a private modpack.  It makes attempts to fix some bugs and provide compatability with other mods.  It also merges the MovingWorld library because, let's face it, it's only ever going to be used for Davinci's Vessels anyway.
 
-####<p style='text-align: center;'>Contact</p>
+Under no circumstances should bugs on this mod be reported to the official Davinci's Vessels github.  They have discontinued support for 1.12.2 anyway(which is why I have to modify it for my own needs)
 
-The best way to get in contact with me is to go on #unascribed on irc.esper.net
+The modifications added also create sloppy dependencies on other mods, If you decide to build this modified copy then you're on your own.
+
+Bugs Fixed:
+-Chests and various other containers don't dump their contents when the ship is mounted.
+-Optifine rendering is fixed so glass isn't rendered as a solid.
+-Various blocks from other mods rotate correctly when the ship is parked.
+
