@@ -31,7 +31,7 @@ public class ConnectionHandler {
 
             if (event.player.getRidingEntity() != null && event.player.getRidingEntity() instanceof EntityShip
                     && !event.player.world.getMinecraftServer().isSinglePlayer()) {
-                ((EntityShip) event.player.getRidingEntity()).disassemble(true);
+                ((EntityShip) event.player.getRidingEntity()).disassemble();
             }
         }
     }

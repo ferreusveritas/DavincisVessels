@@ -27,7 +27,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ChunkDisassembler {
-	public boolean overwrite;
 	private EntityMovingWorld movingWorld;
 
 	private AssembleResult result;
@@ -36,13 +35,9 @@ public class ChunkDisassembler {
 
 	public ChunkDisassembler(EntityMovingWorld EntityMovingWorld) {
 		movingWorld = EntityMovingWorld;
-		overwrite = false;
 	}
 
 	public boolean canDisassemble(MovingWorldAssemblyInteractor assemblyInteractor) {
-		if (overwrite) {
-			return true;
-		}
 		World world = movingWorld.world;
 		MobileChunk chunk = movingWorld.getMobileChunk();
 		float yaw = Math.round(movingWorld.rotationYaw / 90F) * 90F;

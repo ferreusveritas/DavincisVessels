@@ -51,10 +51,10 @@ public class CommandDisassembleNear extends CommandBase {
             }
 
             if (ne == null) {
-                sender.sendMessage(new TextComponentString("No ship in a " + ((int) range) + " OBJECTS' range"));
+                sender.sendMessage(new TextComponentString("No ship in a " + ((int) range) + " block range"));
                 return;
             }
-            if (!ne.disassemble(false)) {
+            if (!ne.disassemble()) {
                 sender.sendMessage(new TextComponentString("Failed to disassemble ship; dropping to items"));
                 ne.dropAsItems();
             }

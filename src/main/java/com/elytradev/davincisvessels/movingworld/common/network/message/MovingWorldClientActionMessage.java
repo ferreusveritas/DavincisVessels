@@ -30,7 +30,7 @@ public class MovingWorldClientActionMessage extends Message {
 		this.movingWorld = movingWorld;
 		this.action = action;
 
-		if (action == MovingWorldClientAction.DISASSEMBLE || action == MovingWorldClientAction.DISASSEMBLEWITHOVERWRITE) {
+		if (action == MovingWorldClientAction.DISASSEMBLE) {
 			//movingWorld.disassembling = true;
 		}
 	}
@@ -47,13 +47,7 @@ public class MovingWorldClientActionMessage extends Message {
 					movingWorld.updatePassengerPosition(sender, movingWorld.riderDestination, 1);
 					movingWorld.removePassengers();
 				}
-				movingWorld.disassemble(false);//Leave this in the clear to notify the player.  Does it's own checks
-				break;
-			case DISASSEMBLEWITHOVERWRITE:
-				//movingWorld.alignToGrid(true);
-				movingWorld.updatePassengerPosition(sender, movingWorld.riderDestination, 1);
-				movingWorld.removePassengers();
-				movingWorld.disassemble(true);
+				movingWorld.disassemble();//Leave this in the clear to notify the player.  Does it's own checks
 				break;
 			case ALIGN:
 				movingWorld.alignToGrid(true);

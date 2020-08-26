@@ -249,7 +249,7 @@ public class EntityShip extends EntityMovingWorld {
 				if (DavincisVesselsMod.INSTANCE.getNetworkConfig().getShared().disassembleOnDismount) {
 					alignToGrid(true);
 					updatePassengerPosition(prevRiddenByEntity, riderDestination, 1);
-					disassemble(false);
+					disassemble();
 				} else {
 					if (!world.isRemote && isFlying()) {
 						driftCooldown = 20 * 6;
@@ -425,7 +425,7 @@ public class EntityShip extends EntityMovingWorld {
 	}
 
 	@Override
-	public boolean disassemble(boolean overwrite) {
+	public boolean disassemble() {
 		if (world.isRemote) {
 			return true;
 		}
@@ -433,7 +433,6 @@ public class EntityShip extends EntityMovingWorld {
 		updatePassenger(getControllingPassenger());
 
 		ChunkDisassembler disassembler = getDisassembler();
-		disassembler.overwrite = overwrite;
 
 		if (!disassembler.canDisassemble(getNewAssemblyInteractor())) {
 			if (prevRiddenByEntity instanceof EntityPlayer) {

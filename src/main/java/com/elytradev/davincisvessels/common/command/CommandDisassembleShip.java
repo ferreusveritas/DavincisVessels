@@ -25,25 +25,27 @@ public class CommandDisassembleShip extends CommandBase {
             Entity player = (Entity) sender;
             if (player.getRidingEntity() instanceof EntityShip) {
                 EntityShip ship = (EntityShip) player.getRidingEntity();
-                int mode = 0;
-                if (args != null && args.length > 2) {
-                    if (args[0].equals("overwrite") || args[0].equals("override")) {
-                        sender.sendMessage(new TextComponentString("Overwriting existing OBJECTS with ship OBJECTS"));
-                        mode = 1;
-                    } else if (args[1].equals("drop")) {
+                boolean drop = false;
+                                
+                if (args != null && args.length > 0) {
+                    if (args[0].equals("drop")) {
                         sender.sendMessage(new TextComponentString("Dropping to items if rejoining ship with the world fails"));
-                        mode = 2;
+                        drop = true;
                     }
                 } else {
-                    sender.sendMessage(new TextComponentString("Trying to add ship OBJECTS to world"));
+                    sender.sendMessage(new TextComponentString("Trying to add ship blocks to world"));
                 }
 
-                if (!ship.disassemble(mode == 1)) {
-                    if (mode == 2) {
+                if (!ship.disassemble()) {
+                    if (drop) {
+                    	player.dismountRidingEntity();
                         ship.dropAsItems();
+                        ship.setDead();
                     }
+                } else {
+                	player.dismountRidingEntity();
                 }
-                player.dismountRidingEntity();
+                
                 return;
             }
         }

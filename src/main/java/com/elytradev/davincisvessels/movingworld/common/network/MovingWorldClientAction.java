@@ -1,7 +1,7 @@
 package com.elytradev.davincisvessels.movingworld.common.network;
 
 public enum MovingWorldClientAction {
-    NONE, ALIGN, DISASSEMBLE, DISASSEMBLEWITHOVERWRITE;
+    NONE, ALIGN, DISASSEMBLE;
 
     public static byte toByte(MovingWorldClientAction action) {
         switch (action) {
@@ -9,8 +9,6 @@ public enum MovingWorldClientAction {
                 return (byte) 1;
             case DISASSEMBLE:
                 return (byte) 2;
-            case DISASSEMBLEWITHOVERWRITE:
-                return (byte) 3;
             default:
                 return (byte) 0;
         }
@@ -22,8 +20,6 @@ public enum MovingWorldClientAction {
                 return ALIGN;
             case 2:
                 return DISASSEMBLE;
-            case 3:
-                return DISASSEMBLEWITHOVERWRITE;
             default:
                 return NONE;
         }

@@ -744,17 +744,15 @@ public abstract class EntityMovingWorld extends EntityBoat implements IEntityAdd
 
 	public boolean canDisassemble() {
 		ChunkDisassembler disassembler = getDisassembler();
-		disassembler.overwrite = false;
 		return disassembler.canDisassemble(getAssemblyInteractor());
 	}
 
-	public boolean disassemble(boolean overwrite) {
+	public boolean disassemble() {
 		if (world.isRemote) {
 			return true;
 		}
 
 		ChunkDisassembler disassembler = getDisassembler();
-		disassembler.overwrite = overwrite;
 
 		if (!disassembler.canDisassemble(getAssemblyInteractor())) {
 			return false;
@@ -957,7 +955,7 @@ public abstract class EntityMovingWorld extends EntityBoat implements IEntityAdd
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (MovingWorldSizeOverflowException ssoe) {
-			disassemble(false);
+			disassemble();
 			DavincisVesselsMod.LOG.warn("Ship is too large to be sent");
 		}
 		writeMovingWorldSpawnData(data);
